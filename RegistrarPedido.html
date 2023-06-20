@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Registrar Usuario</title>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ 
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <form class="col s12">
+
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input id="nit" type="number" class="validate">
+                  <label for="nit">Nit</label>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">lock</i>
+                  <input id="fecha" type="date" class="validate">
+                  <label for="fecha">Fecha</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="factura" type="text" class="validate">
+                    <label for="factura">Factura</label>
+                  </div>
+                <div class="input-field col s12">
+                    <select class="browser-default" title="Estado:" id="estado">
+                      <option value="Activo">Activo</option>
+                      <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <div class="input-field col s12">
+                    <button id="btnRegistrarPedido" class="btn waves-effect waves-light" type="button" name="action">Registrar
+                        <i class="material-icons right">send</i>
+                      </button>
+                </div>
+              
+            </form>
+          </div>
+    </div>
+    
+    <script src="pedidos.js"></script>
+
+    
+</body>
+</html>

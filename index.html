@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(https://cdn.pixabay.com/photo/2022/01/23/03/18/farming-6959638_1280.jpg);
+        }
+
+        .hamburger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 99;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+        }
+
+        .line {
+            background-color: #fff;
+            width: 100%;
+            height: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .line-1 {
+            transform-origin: top left;
+        }
+
+        .line-3 {
+            transform-origin: bottom left;
+        }
+
+        .hamburger.is-active .line-1 {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.is-active .line-2 {
+            opacity: 0;
+        }
+
+        .hamburger.is-active .line-3 {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 98;
+        }
+
+        .menu.active {
+            transform: translateX(0);
+        }
+
+        .menu__content {
+            background-color: rgba(255, 253, 253, 0.5);
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgb(10, 10, 10);
+        }
+
+        .menu__item {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="hamburger" id="hamburger">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+    </div>
+
+    <div class="menu" id="menu">
+        <div class="menu__content animate__animated animate__fadeInDown">
+            <a href="ListarClientes.html" class="menu__item">Clientes</a>
+            <a href="ListarProveedores.html" class="menu__item">Proveedores</a>
+            <a href="ListarVentas.html" class="menu__item">Ventas</a>
+            <a href="ListarPedidos.html" class="menu__item">Pedidos</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#hamburger").click(function() {
+                $(this).toggleClass("is-active");
+                $("#menu").toggleClass("active");
+            });
+        });
+    </script>
+</body>
+</html>

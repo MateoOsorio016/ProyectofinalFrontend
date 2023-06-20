@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    
+    <title>ListarVentas</title>
+</head>
+<body>
+    <div class="container">
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>
+                        Factura
+                    </th>
+                    <th>
+                        Subtotal
+                    </th>
+                    <th>
+                        IVA
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="contenido">
+
+            </tbody>
+
+        </table>
+        <div class="right-align">
+          <a href="RegistrarVenta.html" class="waves-effect waves-light btn">Registrar</a>
+        </div>
+    </div>
+    <!-- Modal Trigger -->
+  
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+
+        <div class="container">
+            <div class="row">
+                <form class="col s12">
+                    
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input type="hidden" id="_id" class="validate">
+                        <input id="factura" type="text" class="validate">
+                        <label for="factura">Factura</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="subtotal" type="number" class="validate">
+                        <label for="subtotal">Subtotal</label>
+                      </div>
+                      <div class="input-field col s12">
+                          <i class="material-icons prefix">lock</i>
+                          <input id="iva" type="number" class="validate">
+                          <label for="iva">IVA</label>
+                      </div>
+                      <div class="input-field col s12">
+                          <button id="btnActualizarVenta" class="btn waves-effect waves-light" type="button" name="action">Actualizar
+                              <i class="material-icons right">send</i>
+                            </button>
+                      </div>
+                    
+                  
+                </form>
+              </div>
+        </div>
+    
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+ 
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+     
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   
+
+
+<script>
+        
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    //var instances = M.Modal.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+    </script>
+    <script src="ventas.js"></script>
+</body>
+</html>
