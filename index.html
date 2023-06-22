@@ -1,122 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Menu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background-image: url(https://cdn.pixabay.com/photo/2022/01/23/03/18/farming-6959638_1280.jpg);
-        }
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css.css">
+    <title>Burdeos</title>
+  </head>
+  <body>
+ 
+    <header class="container-fluid bg-success d-flex justify-content-center">
+        <p class="text-light mb-0 p-2 fs-6">Café Artesanal Burdeo</p>
+    </header>
 
-        .hamburger {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 99;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 20px;
-        }
+    <nav  class="navbar navbar-expand-lg navbar-light p-3"  id="menu">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+              <span class="fs-5 text-success fw-bold">Burdeo</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        .line {
-            background-color: #fff;
-            width: 100%;
-            height: 3px;
-            transition: background-color 0.3s ease;
-        }
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ListarClientes.html">Clientes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ListarProveedores.html">Proveedores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ListarPedidos.html">Pedidos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ListarVentas.html">Ventas</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="email" placeholder="Escribe..." aria-label="Escribe...">
+              <button class="btn btn-success btn-success-outline-success" type="button">Buscar</button>
+            </form>
+          </div>
 
-        .line-1 {
-            transform-origin: top left;
-        }
+        </div>
+      </nav>
+   
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="3000">
+            <img src="https://arcafeartesanal.files.wordpress.com/2019/10/coffee-206142_19201.jpg?w=1600&h=1063&crop=1" class="d-block w-100" alt="">
+          </div>
+          
+ 
+          <div class="carousel-item" data-bs-interval="3000">
+            <img src="https://quehacerenpalenque.com/wp-content/uploads/2020/01/images-98.jpg" class="d-block w-100" alt="...">
+          </div>
+ 
 
-        .line-3 {
-            transform-origin: bottom left;
-        }
-
-        .hamburger.is-active .line-1 {
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        .hamburger.is-active .line-2 {
-            opacity: 0;
-        }
-
-        .hamburger.is-active .line-3 {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
-        .menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-            z-index: 98;
-        }
-
-        .menu.active {
-            transform: translateX(0);
-        }
-
-        .menu__content {
-            background-color: rgba(255, 253, 253, 0.5);
-            width: 300px;
-            height: 300px;
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: rgb(10, 10, 10);
-        }
-
-        .menu__item {
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
+          <div class="carousel-item" data-bs-interval="3000">
+            <img src="https://www.amcce.org/userfiles/media/default/3qitpcvvboev.jpeg" class="d-block w-100" alt="...">
+          </div>
+ 
+ 
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel"  data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel"  data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>    
     
-    <div class="hamburger" id="hamburger">
-        <div class="line line-1"></div>
-        <div class="line line-2"></div>
-        <div class="line line-3"></div>
-    </div>
 
-    <div class="menu" id="menu">
-        <div class="menu__content animate__animated animate__fadeInDown">
-            <a href="ListarClientes.html" class="menu__item">Clientes</a>
-            <a href="ListarProveedores.html" class="menu__item">Proveedores</a>
-            <a href="ListarVentas.html" class="menu__item">Ventas</a>
-            <a href="ListarPedidos.html" class="menu__item">Pedidos</a>
+
+    <section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto" id="intro">
+    <h1 class="p-3 fs-2 border-top border-3">Burdeo es una empresa de café <span class="text-success">100% Artesanal<span/></h1>
+     <p class="p-3  fs-4">
+         <span class="text-success">Burdeo</span> es una empresa dedicada al café artesanal de alta calidad, enfocados a todos los públicos que quieran vivr la experiencia de un excelente café artesanal.        </p>   
+    </section>
+
+<section class="w-100">
+  <section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto" id="intro">
+    <h1 class="p-3 fs-2 border-top border-3">Productos <span class="text-success">destacados<span/></h1> 
+    </section>
+<section>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" style="padding: 20px 40px;">
+      <div class="card h-100" style="width: 95%;">
+        <img src="https://media.casalia.co/2020/07/cafe_artesanal_la_vereda_casalia_antioquia.jpg" class="card-img-top" alt="..." style="width: 50%;">
+        <div class="card-body">
+          <h5 class="card-title">Café Antioquia 250gr.</h5>
+          <p class="card-text">Café Balanceado con notas dulces, acidez y cuerpo/medio, aroma herbal ligeramente afrutado.</p>
+          <a href="productos" class="btn btn-success">Ver productos</a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Última vista hace 3 minutos</small>
+        </div>
+      </div>
+    </div>
+    <div class="col" style="padding: 20px 40px;">
+      <div class="card h-100" style="width: 95%;">
+        <img src="https://media.casalia.co/2020/07/cafe_artesanal_la_vereda_casalia_sierra_nevada.jpg" class="card-img-top" alt="..." style="width: 50%;">
+        <div class="card-body">
+          <h5 class="card-title">Café Sierra Nevada 250gr.</h5>
+          <p class="card-text">Café con notas a chocolate, nuez, caramelo y almibar, acidez y cuerpo medios.</p>
+          <a href="productos" class="btn btn-success">Ver productos</a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Última vista hace 15 minutos</small>
+        </div>
+      </div>
+    </div>
+    <div class="col" style="padding: 20px 40px;">
+      <div class="card h-100" style="width: 95%;">
+        <img src="https://media.casalia.co/2020/07/cafe_artesanal_la_vereda_casalia_narino.jpg" class="card-img-top" alt="..." style="width: 50%;">
+        <div class="card-body">
+          <h5 class="card-title">Café Nariño 250gr.</h5>
+          <p class="card-text">Café con acidez y cuerpo/alto, de aroma muy pronunciado a flores y sabores a nuez.</p>
+          <a href="productos" class="btn btn-success">Ver productos</a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Última vista hace 17 minutos</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  
+
+    
+
+    <div id="local" class="border-top border-2">
+        <div class="mapa"> </div>
+        <div>
+            <div class="wrapper-local">
+                <h2>Café de Origen</h2>
+                <h2 class="text-success mb-4" id="typewriter"></h2>
+                <p class="fs-5 text-body">Burdeo es la herencia de Rosa, una abuela campesina que crío a su familia por medio del café y la tradición.</p>
+                <section class="d-flex justify-content-start" id="numeros-local">
+                    <div>
+                        <p class="text-success fs-5">182</p>
+                        <p>Días de siembra</p>
+                    </div>
+                    <div>
+                        <p class="text-success fs-5">100%</p>
+                        <p>Artesanal</p>
+                    </div>
+                    <div>
+                        <p class="text-success fs-5">100%</p>
+                        <p>Sabor de casa</p>
+                    </div>
+                    <div>
+                      <a href="contactos" class="btn btn-success">Contactanos</a>
+                    </div>
+              </section>
+
+            </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#hamburger").click(function() {
-                $(this).toggleClass("is-active");
-                $("#menu").toggleClass("active");
-            });
-        });
-    </script>
-</body>
+</section>
+<footer class="w-100  d-flex  align-items-center justify-content-center flex-wrap">
+  <p class="fs-5 px-3  pt-3">Burdeo café de Origen y Herencia</p>
+  <div id="iconos" >
+      <a href="https://www.facebook.com"><i class="bi bi-facebook"></i></a>
+      <a href="https://twitter.com/home"><i class="bi bi-twitter"></i></a>
+      <a href="https://www.instagram.com"><i class="bi bi-instagram"></i></a>  
+  </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
