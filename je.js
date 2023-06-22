@@ -1,4 +1,4 @@
-const url = 'http://localhost:8087/api/proveedores'
+const url = 'https://coffevart.onrender.com/api/proveedores'
 const listarproveedores =async()=>{
     let body= document.getElementById('contenido');
     if(body){

@@ -1,4 +1,4 @@
-const urlC= 'http://localhost:8087/api/clientes'
+const urlC= 'https://coffevart.onrender.com/api/clientes'
 
 const listarclientes=async ()=>{
     let body= document.getElementById('contenido');

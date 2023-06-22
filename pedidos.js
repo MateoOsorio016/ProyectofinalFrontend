@@ -1,4 +1,4 @@
-const urlP='http://localhost:8087/api/pedidos'
+const urlP='https://coffevart.onrender.com/api/pedidos'
 
 const listarpedidos=async()=>{
     let body=document.getElementById('contenido')

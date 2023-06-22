@@ -1,4 +1,4 @@
-const urlV= 'http://localhost:8087/api/ventas'
+const urlV= 'https://coffevart.onrender.com/api/ventas'
 
 const listarventas=async()=>{
     let body= document.getElementById('contenido');
