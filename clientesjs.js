@@ -52,7 +52,7 @@ const registrarClientes=async()=>{
 
     }
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const regexNombre= /^[a-zA-Z\s]+$/
+    const regexNombre = /^[a-zA-Z\s]*$/
     if(regexEmail.test(Email) || regexNombre.test(Nombre) || regexNombre.test(Apellido) ){
         fetch(urlC,{
             method: 'POST',
