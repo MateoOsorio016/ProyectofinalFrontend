@@ -12,7 +12,6 @@ const listarproveedores =async()=>{
                 mensaje+= `<tr><td>${proveedores.Nit}</td>`+
                 `<td>${proveedores.Nombre}</td>`+
                 `<td>${proveedores.Telefono}</td>`+
-                `<td>${proveedores.Categoria}</td>`+
                 `<td>${proveedores.Cantidad}</td>`+
                 `<td>${proveedores.Factura}</td>`+
                 `<td>${proveedores.Fecha}</td>`+
@@ -37,7 +36,6 @@ const registrarProveedores = async() =>{
     let Factura = document.getElementById('factura').value
     let Cantidad=document.getElementById('cantidad').value
     let Fecha = document.getElementById('fecha').value
-    let Categoria = document.getElementById('categoria').value
     let Estado = document.getElementById('estado').value
 
 
@@ -48,12 +46,11 @@ const registrarProveedores = async() =>{
         Factura:Factura,
         Cantidad:Cantidad,
         Fecha:Fecha,
-        Categoria:Categoria,
         Estado:Estado,
         
     }
     const FechaA = new Date().toISOString().split('T')[0];
-    if(Fecha>=FechaA && Cantidad>0){
+    if(Fecha==FechaA && Cantidad>0 ){
         fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -79,7 +76,6 @@ const editar = (proveedor) =>{
     let Factura = document.getElementById('factura').value=''
     let Fecha = document.getElementById('fecha').value=''
     let Estado = document.getElementById('estado').value=''
-    let Categoria = document.getElementById('categoria').value=''
 
     document.getElementById('_id').value=proveedor._id
     document.getElementById('nombre').value=proveedor.Nombre
@@ -89,7 +85,6 @@ const editar = (proveedor) =>{
     document.getElementById('factura').value=proveedor.Factura
     document.getElementById('fecha').value=proveedor.Fecha
     document.getElementById('estado').value=proveedor.Estado
-    document.getElementById('categoria').value=proveedor.Categoria
 }
 const actualizarUsuario = async() =>{
     //Captura de valores de datos enviados desde el formulario
@@ -100,7 +95,6 @@ const actualizarUsuario = async() =>{
     let Factura = document.getElementById('factura').value
     let Fecha = document.getElementById('fecha').value
     let Estado = document.getElementById('estado').value
-    let Categoria = document.getElementById('categoria').value
 
     let proveedor = {
         _id: document.getElementById('_id').value,
@@ -111,7 +105,6 @@ const actualizarUsuario = async() =>{
         Factura:Factura,
         Fecha:Fecha,
         Estado:Estado,
-        Categoria:Categoria
         }
 
     const FechaA = new Date().toISOString().split('T')[0];
