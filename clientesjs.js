@@ -52,7 +52,8 @@ const registrarClientes=async()=>{
 
     }
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(regexEmail.test(Email)){
+    const regexNombre= /^[a-zA-Z\s]+$/
+    if(regexEmail.test(Email) || regexNombre.test(Nombre) || regexNombre.test(Apellido) ){
         fetch(urlC,{
             method: 'POST',
             mode: 'cors',
@@ -66,7 +67,7 @@ const registrarClientes=async()=>{
 
     }
     else{
-        alert('Formato de email de invalido')
+        alert('Verificar los datos ingresados')
 
     }
     console.log(cliente)
