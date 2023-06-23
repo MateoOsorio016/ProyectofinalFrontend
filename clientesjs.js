@@ -131,7 +131,7 @@ const actualizarCliente=async()=>{
 
     }
     else{
-        alert('Formato de email de invalido')
+        alert('Verificar los datos ingresados')
 
     }
     
