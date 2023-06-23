@@ -116,8 +116,8 @@ const actualizarCliente=async()=>{
                 Estado:Estado
     }
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if(regexEmail.test(Email)){
+    const regexNombre =  /^[a-zA-Z\s]+$/
+    if(regexEmail.test(Email) && regexNombre.test(Nombre) && regexNombre.test(Apellido) ){
         fetch(urlC,{
             method: 'PUT',
             mode: 'cors',
