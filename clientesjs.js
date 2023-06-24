@@ -51,27 +51,27 @@ const registrarClientes=async()=>{
         Estado:Estado
 
     }
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const regexNombre =  /^[a-zA-Z\s]+$/
-    if(regexEmail.test(Email) && regexNombre.test(Nombre) && regexNombre.test(Apellido) ){
-        fetch(urlC,{
-            method: 'POST',
-            mode: 'cors',
-            body:JSON.stringify(cliente),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
-        })
-        .then(response => response.json())
-        .then(json=>{
-            alert(json.mensaje)
-        })
+const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const regexNombre = /^[a-zA-Z\s]+$/;
 
+if (!regexEmail.test(Email)) {
+    alert('Formato de email inválido');
+} else if (!regexNombre.test(Nombre)) {
+    alert('El campo de nombre no puede llevar caracteres numéricos');
+} else if (!regexNombre.test(Apellido)) {
+    alert('El campo de apellido no puede llevar caracteres numéricos');
+} else {
+    fetch(urlC, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(cliente),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+    .then(response => response.json())
+    .then(json => {
+        alert(json.mensaje);
+    });
     }
-    else{
-        alert('Verificar los datos ingresados')
-
-    }
-    console.log(cliente)
-
 }
 const editar = (cliente)=>{
     let _id= document.getElementById('_id').value=''
@@ -115,25 +115,47 @@ const actualizarCliente=async()=>{
                 Direccion:Direccion,
                 Estado:Estado
     }
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const regexNombre =  /^[a-zA-Z\s]+$/
-    if(regexEmail.test(Email) && regexNombre.test(Nombre) && regexNombre.test(Apellido) ){
-        fetch(urlC,{
-            method: 'PUT',
-            mode: 'cors',
-            body:JSON.stringify(cliente),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
-        })
-        .then(response => response.json())
-        .then(json=>{
-            alert(json.mensaje)
-        })
+   const registrarClientes=async()=>{
+    let Nombre= document.getElementById('nombre').value
+    let Apellido= document.getElementById('apellido').value
+    let Documento= document.getElementById('documento').value
+    let Email= document.getElementById('email').value
+    let Telefono= document.getElementById('telefono').value
+    let Direccion= document.getElementById('direccion').value
+    let Estado = document.getElementById('estado').value
+
+    let cliente= {
+        Nombre:Nombre,
+        Apellido:Apellido,
+        Documento:Documento,
+        Email:Email,
+        Telefono:Telefono,
+        Direccion:Direccion,
+        Estado:Estado
 
     }
-    else{
-        alert('Verificar los datos ingresados')
+const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const regexNombre = /^[a-zA-Z\s]+$/;
 
+if (!regexEmail.test(Email)) {
+    alert('Formato de email inválido');
+} else if (!regexNombre.test(Nombre)) {
+    alert('El campo de nombre no puede llevar caracteres numéricos');
+} else if (!regexNombre.test(Apellido)) {
+    alert('El campo de apellido no puede llevar caracteres numéricos');
+} else {
+    fetch(urlC, {
+        method: 'PUT',
+        mode: 'cors',
+        body: JSON.stringify(cliente),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+    .then(response => response.json())
+    .then(json => {
+        alert(json.mensaje);
+    });
     }
+}
     
 }
 const eliminar=  (_id)=>{
