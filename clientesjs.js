@@ -115,25 +115,6 @@ const actualizarCliente=async()=>{
                 Direccion:Direccion,
                 Estado:Estado
     }
-   const registrarClientes=async()=>{
-    let Nombre= document.getElementById('nombre').value
-    let Apellido= document.getElementById('apellido').value
-    let Documento= document.getElementById('documento').value
-    let Email= document.getElementById('email').value
-    let Telefono= document.getElementById('telefono').value
-    let Direccion= document.getElementById('direccion').value
-    let Estado = document.getElementById('estado').value
-
-    let cliente= {
-        Nombre:Nombre,
-        Apellido:Apellido,
-        Documento:Documento,
-        Email:Email,
-        Telefono:Telefono,
-        Direccion:Direccion,
-        Estado:Estado
-
-    }
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const regexNombre = /^[a-zA-Z\s]+$/;
 
