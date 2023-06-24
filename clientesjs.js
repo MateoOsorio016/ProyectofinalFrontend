@@ -136,9 +136,9 @@ if (!regexEmail.test(Email)) {
         alert(json.mensaje);
     });
     }
-}
+};
     
-}
+
 const eliminar=  (_id)=>{
   if(confirm('¿Esta seguro de realizar la eliminacion?')== true){
     let cliente={
