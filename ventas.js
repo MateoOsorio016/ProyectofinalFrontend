@@ -35,22 +35,23 @@ const registrarVentas= async()=>{
         IVA:IVA
         
     }
-    if(Subtotal>0 && IVA>0){
-        fetch(urlV,{
-            method:'POST',
-            mode:'cors',
-            body:JSON.stringify(venta),
-            headers:{'Content-Type':'application/json; charset=UTF-8'}
-        })
-        .then(response =>response.json())
-        .then(json=>{
-            alert(json.mensaje)
-        })
-    }
-    else{
-        alert('Ingrese los datos correctamente, los valores de subtotal o IVA no pueden ser menores de 1')
-    }
+   if (Subtotal <= 0) {
+    alert('El subtotal no puede ser menor a 0');
+} else if (IVA < 0) {
+    alert('El IVA no puede ser menor a 0');
+} else {
+    fetch(urlV, {
+        method: 'PUT',
+        mode: 'cors',
+        body: JSON.stringify(venta),
+        headers: {'Content-Type': 'application/json; charset=UTF-8'}
+    })
+    .then(response => response.json())
+    .then(json => {
+        alert(json.mensaje);
+    });
 }
+
 const editar=(venta)=>{
     let _id=document.getElementById('_id').value=''
     let Factura=document.getElementById('factura').value=''
@@ -74,24 +75,23 @@ const actualizarVenta=async()=>{
         Subtotal:Subtotal,
         IVA:IVA
     }
-    if(Subtotal>0 && IVA>0){
-        let totalCalculado = parseFloat(Subtotal) + (parseFloat(Subtotal) * (parseFloat(IVA) / 100));
-        venta.Total = totalCalculado;
-        fetch(urlV,{
-            method:'PUT',
-            mode:'cors',
-            body:JSON.stringify(venta),
-            headers:{'Content-Type':'application/json; charset=UTF-8'}
-        })
-       .then(response =>response.json())
-       .then(json=>{
-        alert(json.mensaje)
-       })
-    }
-    else{
-        alert('Ingrese los datos correctamente, los valores de subtotal o IVA no pueden ser menores de 1')
-    }
+   if (Subtotal <= 0) {
+    alert('El subtotal no puede ser menor a 0');
+} else if (IVA < 0) {
+    alert('El IVA no puede ser menor a 0');
+} else {
+    fetch(urlV, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(venta),
+        headers: {'Content-Type': 'application/json; charset=UTF-8'}
+    })
+    .then(response => response.json())
+    .then(json => {
+        alert(json.mensaje);
+    });
 }
+
 
 
 
