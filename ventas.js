@@ -41,7 +41,7 @@ const registrarVentas= async()=>{
     alert('El IVA no puede ser menor a 0');
 } else {
     fetch(urlV, {
-        method: 'PUT',
+        method: 'POST',
         mode: 'cors',
         body: JSON.stringify(venta),
         headers: {'Content-Type': 'application/json; charset=UTF-8'}
@@ -50,7 +50,8 @@ const registrarVentas= async()=>{
     .then(json => {
         alert(json.mensaje);
     });
-}
+}    
+}   
 
 const editar=(venta)=>{
     let _id=document.getElementById('_id').value=''
@@ -81,7 +82,7 @@ const actualizarVenta=async()=>{
     alert('El IVA no puede ser menor a 0');
 } else {
     fetch(urlV, {
-        method: 'POST',
+        method: 'PUT',
         mode: 'cors',
         body: JSON.stringify(venta),
         headers: {'Content-Type': 'application/json; charset=UTF-8'}
@@ -90,6 +91,7 @@ const actualizarVenta=async()=>{
     .then(json => {
         alert(json.mensaje);
     });
+}
 }
 
 
