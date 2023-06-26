@@ -10,6 +10,8 @@ const listarventas=async()=>{
             let listarventas=data.ventas
             listarventas.map((ventas)=>{
                 mensaje+= `<tr><td>${ventas.Factura}</td>`+
+                `<td>${ventas.Cliente}</td>`+
+                `<td>${ventas.Producto}</td>`+
                 `<td>${ventas.Subtotal}</td>`+
                 `<td>${ventas.IVA}</td>`+
                 `<td>${ventas.Total}</td>`+
@@ -28,19 +30,30 @@ const registrarVentas= async()=>{
     let Factura=document.getElementById('factura').value;
     let Subtotal=document.getElementById('subtotal').value;
     let IVA=document.getElementById('iva').value;
+    let Cliente=document.getElementById('cliente').value;
+    let Producto=document.getElementById('producto').value;
 
     let venta={
         Factura:Factura,
+        Cliente:Cliente,
+        Producto:Producto,
         Subtotal:Subtotal,
         IVA:IVA
         
     }
-   if (Subtotal <= 0) {
+  const regexNombre = /^[a-zA-Z\s]+$/;
+  if (Subtotal <= 0) {
     alert('El subtotal no puede ser menor a 0');
 } else if (IVA < 0) {
     alert('El IVA no puede ser menor a 0');
-} else {
-    fetch(urlV, {
+} else if(!regexNombre.test(Nombre)) {
+	alert('El cliente no puede llevar caracteres numericos')
+   
+} else if (!regexNombre.test(Producto)) 
+  alert('El producto no puede llevar caracteres numericos')
+}else{
+
+fetch(urlV, {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify(venta),
@@ -49,9 +62,9 @@ const registrarVentas= async()=>{
     .then(response => response.json())
     .then(json => {
         alert(json.mensaje);
-    });
-}    
-}   
+    });  
+    }
+}
 
 const editar=(venta)=>{
     let _id=document.getElementById('_id').value=''
