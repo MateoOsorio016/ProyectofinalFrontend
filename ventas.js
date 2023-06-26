@@ -39,7 +39,7 @@ let Cliente = document.getElementById('cliente').value;
     Cliente: Cliente,
     Producto: Producto,
     Subtotal: Subtotal,
-    IVA: IVA,
+    IVA: IVA
   };
 
   const regexNombre = /^[a-zA-Z\s]+$/;
