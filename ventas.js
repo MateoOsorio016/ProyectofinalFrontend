@@ -26,45 +26,43 @@ const listarventas=async()=>{
 }
 listarventas();
 
-const registrarVentas= async()=>{
-    let Factura=document.getElementById('factura').value;
-    let Subtotal=document.getElementById('subtotal').value;
-    let IVA=document.getElementById('iva').value;
-    let Cliente=document.getElementById('cliente').value;
-    let Producto=document.getElementById('producto').value;
+const registrarVentas = async () => {
+  let Factura = document.getElementById('factura').value;
+  let Subtotal = document.getElementById('subtotal').value;
+  let IVA = document.getElementById('iva').value;
+  let Cliente = document.getElementById('cliente').value;
+  let Producto = document.getElementById('producto').value;
 
-    let venta={
-        Factura:Factura,
-        Cliente:Cliente,
-        Producto:Producto,
-        Subtotal:Subtotal,
-        IVA:IVA
-        
-    }
+  let venta = {
+    Factura: Factura,
+    Cliente: Cliente,
+    Producto: Producto,
+    Subtotal: Subtotal,
+    IVA: IVA,
+  };
+
   const regexNombre = /^[a-zA-Z\s]+$/;
   if (Subtotal <= 0) {
     alert('El subtotal no puede ser menor a 0');
-} else if (IVA < 0) {
+  } else if (IVA < 0) {
     alert('El IVA no puede ser menor a 0');
-} else if(!regexNombre.test(Nombre)) {
-	alert('El cliente no puede llevar caracteres numericos')
-   
-} else if (!regexNombre.test(Producto)) 
-  alert('El producto no puede llevar caracteres numericos')
-}else{
-
-fetch(urlV, {
-        method: 'POST',
-        mode: 'cors',
-        body: JSON.stringify(venta),
-        headers: {'Content-Type': 'application/json; charset=UTF-8'}
+  } else if (!regexNombre.test(Nombre)) {
+    alert('El cliente no puede llevar caracteres numéricos');
+  } else if (!regexNombre.test(Producto)) {
+    alert('El producto no puede llevar caracteres numéricos');
+  } else {
+    fetch(urlV, {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(venta),
+      headers: { 'Content-Type': 'application/json; charset=UTF-8' },
     })
-    .then(response => response.json())
-    .then(json => {
+      .then((response) => response.json())
+      .then((json) => {
         alert(json.mensaje);
-    });  
-    }
-}
+      });
+  }
+};
 
 const editar=(venta)=>{
     let _id=document.getElementById('_id').value=''
