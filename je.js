@@ -50,8 +50,12 @@ const registrarProveedores = async() =>{
         
     }
     const FechaA = new Date().toISOString().split('T')[0];
-    if(Fecha==FechaA && Cantidad>0 ){
-        fetch(url, {
+    if(Fecha<FechaA ){
+        alert('La fecha debe ser mayor a la actual')
+    }else if (Cantidad<0){
+	 alert('La cantidad debe ser mayor a 0')
+}else{
+	fetch(url, {
             method: 'POST',
             mode: 'cors',
             body:JSON.stringify(proveedor),
@@ -62,10 +66,6 @@ const registrarProveedores = async() =>{
            alert(json.mensaje)
         })
     }
-    else{
-        alert('Datos incorrectos, recuerde que la fecha debe ser la de hoy y la cantidad no puede ser 0')
-    }
-    console.log(proveedor)
 }
 const editar = (proveedor) =>{
     let _id =document.getElementById('_id').value = ''
@@ -107,9 +107,13 @@ const actualizarUsuario = async() =>{
         Estado:Estado,
         }
 
-    const FechaA = new Date().toISOString().split('T')[0];
-    if(Fecha===FechaA ){
-        fetch(url, {
+  const FechaA = new Date().toISOString().split('T')[0];
+    if(Fecha<FechaA ){
+        alert('La fecha debe ser mayor a la actual')
+    }else if (Cantidad<0){
+	 alert('La cantidad debe ser mayor a 0')
+}else{
+	fetch(url, {
             method: 'PUT',
             mode: 'cors',
             body:JSON.stringify(proveedor),
@@ -117,12 +121,9 @@ const actualizarUsuario = async() =>{
         })
         .then(response => response.json()) //La respuesta del método POST de la API
         .then(json => {
-            alert(json.mensaje)
+           alert(json.mensaje)
         })
-    }
-    else{
-        alert('La fecha debe ser mayor a la de hoy');
-        }
+}
 }
 const eliminar =(_id) => {
     if(confirm('¿Está seguro de realizar la eliminación?') == true){
