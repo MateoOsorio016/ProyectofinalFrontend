@@ -52,7 +52,7 @@ const registrarProveedores = async() =>{
     const FechaA = new Date().toISOString().split('T')[0];
     if(Fecha<FechaA ){
         alert('La fecha debe ser mayor a la actual')
-    }else if (Cantidad<0){
+    }else if (Cantidad<=0){
 	 alert('La cantidad debe ser mayor a 0')
 }else{
 	fetch(url, {
@@ -110,7 +110,7 @@ const actualizarUsuario = async() =>{
   const FechaA = new Date().toISOString().split('T')[0];
     if(Fecha<FechaA ){
         alert('La fecha debe ser mayor a la actual')
-    }else if (Cantidad<0){
+    }else if (Cantidad<=0){
 	 alert('La cantidad debe ser mayor a 0')
 }else{
 	fetch(url, {
