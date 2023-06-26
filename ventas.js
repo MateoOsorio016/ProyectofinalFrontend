@@ -28,10 +28,11 @@ listarventas();
 
 const registrarVentas = async () => {
   let Factura = document.getElementById('factura').value;
+let Cliente = document.getElementById('cliente').value;
+  let Producto = document.getElementById('producto').value;
   let Subtotal = document.getElementById('subtotal').value;
   let IVA = document.getElementById('iva').value;
-  let Cliente = document.getElementById('cliente').value;
-  let Producto = document.getElementById('producto').value;
+  
 
   let venta = {
     Factura: Factura,
@@ -46,7 +47,7 @@ const registrarVentas = async () => {
     alert('El subtotal no puede ser menor a 0');
   } else if (IVA < 0) {
     alert('El IVA no puede ser menor a 0');
-  } else if (!regexNombre.test(Nombre)) {
+  } else if (!regexNombre.test(Cliente)) {
     alert('El cliente no puede llevar caracteres numéricos');
   } else if (!regexNombre.test(Producto)) {
     alert('El producto no puede llevar caracteres numéricos');
@@ -67,43 +68,56 @@ const registrarVentas = async () => {
 const editar=(venta)=>{
     let _id=document.getElementById('_id').value=''
     let Factura=document.getElementById('factura').value=''
+    let Cliente = document.getElementById('cliente').value=''
+    let Producto = document.getElementById('producto').value=''
     let Subtotal=document.getElementById('subtotal').value=''
     let IVA=document.getElementById('iva').value=''
 
     document.getElementById('_id').value=venta._id
     document.getElementById('factura').value=venta.Factura
+    document.getElementById('cliente').value=venta.Cliente
+    document.getElementById('producto').value=venta.Producto
     document.getElementById('subtotal').value=venta.Subtotal
     document.getElementById('iva').value=venta.IVA
 }
 
 const actualizarVenta=async()=>{
     let Factura=document.getElementById('factura').value;
+    let Cliente = document.getElementById('cliente').value;
+  let Producto = document.getElementById('producto').value;
     let Subtotal=document.getElementById('subtotal').value;
     let IVA=document.getElementById('iva').value;
 
     let venta={
         _id:document.getElementById('_id').value,
         Factura:Factura,
+        Cliente: Cliente,
+        Producto: Producto,
         Subtotal:Subtotal,
         IVA:IVA
     }
-   if (Subtotal <= 0) {
+  const regexNombre = /^[a-zA-Z\s]+$/;
+  if (Subtotal <= 0) {
     alert('El subtotal no puede ser menor a 0');
-} else if (IVA < 0) {
+  } else if (IVA < 0) {
     alert('El IVA no puede ser menor a 0');
-} else {
+  } else if (!regexNombre.test(Cliente)) {
+    alert('El cliente no puede llevar caracteres numéricos');
+  } else if (!regexNombre.test(Producto)) {
+    alert('El producto no puede llevar caracteres numéricos');
+  } else {
     fetch(urlV, {
-        method: 'PUT',
-        mode: 'cors',
-        body: JSON.stringify(venta),
-        headers: {'Content-Type': 'application/json; charset=UTF-8'}
+      method: 'PUT',
+      mode: 'cors',
+      body: JSON.stringify(venta),
+      headers: { 'Content-Type': 'application/json; charset=UTF-8' },
     })
-    .then(response => response.json())
-    .then(json => {
+      .then((response) => response.json())
+      .then((json) => {
         alert(json.mensaje);
-    });
-}
-}
+      });
+  }
+};
 
 
 
