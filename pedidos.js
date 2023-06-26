@@ -10,8 +10,13 @@ const listarpedidos=async()=>{
             let listarpedidos=data.pedidos
             listarpedidos.map((pedidos)=>{
                 mensaje+= `<tr><td>${pedidos.Nit}</td>`+
+                `<td>${pedidos.Proveedor}</td>`+
+                `<td>${pedidos.Producto}</td>`+
+                `<td>${pedidos.Cantidad}</td>`+
+                `<td>${pedidos.Monto}</td>`+
                 `<td>${pedidos.Fecha}</td>`+
                 `<td>${pedidos.Factura}</td>`+
+                `<td>${pedidos.Total}</td>`+
                 `<td>${pedidos.Estado}</td>`+
                 `<td><a class="waves-effect waves-light btn modal-trigger" href="#modal1" onclick='editar(${JSON.stringify(pedidos)})'>Editar</a>
                 <a class="waves-effect waves-light btn modal-trigger red" href="#" onclick='eliminar("${pedidos._id}")'>Eliminar</a>
@@ -25,19 +30,36 @@ listarpedidos();
 
 const registrarPedidos=async()=>{
     let Nit = document.getElementById('nit').value
+    let Proveedor=  document.getElementById('proveedor').value
+    let Producto=  document.getElementById('producto').value
+    let Cantidad=  document.getElementById('cantidad').value
+    let Monto=  document.getElementById('monto').value
     let Fecha = document.getElementById('fecha').value
     let Factura = document.getElementById('factura').value
     let Estado = document.getElementById('estado').value
 
     let pedido={
         Nit:Nit,
+        Proveedor:Proveedor,
+        Producto:Producto,
+        Cantidad:Cantidad,
+        Monto:Monto,
         Fecha:Fecha,
         Factura:Factura,
         Estado:Estado
     }
     const FechaA = new Date().toISOString().split('T')[0];
-    if(Fecha==FechaA ){
-        fetch(urlP,{
+    const regexNombre = /^[a-zA-Z\s]+$/;
+    if(Fecha<FechaA ){
+        Alert('La fecha no puede ser mayor a la de hoy')
+    }else if(!regexNombre.test(Producto)){
+	alert('El producto no puede llevar caracteres numericos')
+}else if(Cantidad<=0){
+	alert('La cantidad debe ser mayor a 0')
+}else if(Monto<=0){
+	alert('El monto debe ser mayor a 0')
+}else{
+	fetch(urlP,{
             method:'POST',
             mode:'cors',
             body:JSON.stringify(pedido),
@@ -49,19 +71,24 @@ const registrarPedidos=async()=>{
             alert(json.mensaje);
         })
     }
-    else{
-            alert('La fecha no es correcta')
-        }
 }
 const editar=(pedido)=>{
     let _id=document.getElementById('_id').value=''
     let Nit = document.getElementById('nit').value=''
+    let Proveedor=  document.getElementById('proveedor').value=''
+    let Producto=  document.getElementById('producto').value=''
+    let Cantidad=  document.getElementById('cantidad').value=''
+    let Monto=  document.getElementById('monto').value=''
     let Fecha = document.getElementById('fecha').value=''
     let Factura = document.getElementById('factura').value=''
     let Estado = document.getElementById('estado').value=''
     
     document.getElementById('_id').value=pedido._id
     document.getElementById('nit').value=pedido.Nit
+    document.getElementById('proveedor').value=pedido.Proveedor
+    document.getElementById('producto').value=pedido.Producto
+    document.getElementById('cantidad').value=pedido.Cantidad
+    document.getElementById('monto').value=pedido.Monto
     document.getElementById('fecha').value=pedido.Fecha
     document.getElementById('factura').value=pedido.Factura
     document.getElementById('estado').value=pedido.Estado
@@ -71,6 +98,10 @@ const editar=(pedido)=>{
 }
 const actualizarPedido=async()=>{
     let Nit = document.getElementById('nit').value
+    let Proveedor=  document.getElementById('proveedor').value
+    let Producto=  document.getElementById('producto').value
+    let Cantidad=  document.getElementById('cantidad').value
+    let Monto=  document.getElementById('monto').value
     let Fecha = document.getElementById('fecha').value
     let Factura = document.getElementById('factura').value
     let Estado = document.getElementById('estado').value
@@ -78,26 +109,36 @@ const actualizarPedido=async()=>{
     let pedido={
         _id:document.getElementById('_id').value,
         Nit:Nit,
+        Proveedor:Proveedor,
+        Producto:Producto,
+        Cantidad:Cantidad,
+        Monto:Monto,
         Fecha:Fecha,
         Factura:Factura,
         Estado:Estado
     }
     const FechaA = new Date().toISOString().split('T')[0];
-    if(Fecha==FechaA ){
-        fetch(urlP,{
+const regexNombre = /^[a-zA-Z\s]+$/;
+    if(Fecha<FechaA ){
+        Alert('La fecha no puede ser mayor a la de hoy')
+    }else if(!regexNombre.test(Producto)){
+	alert('El producto no puede llevar caracteres numericos')
+}else if(Cantidad<=0){
+	alert('La cantidad debe ser mayor a 0')
+}else if(Monto<=0){
+	alert('El monto debe ser mayor a 0')
+}else{
+	fetch(urlP,{
             method:'PUT',
             mode:'cors',
             body:JSON.stringify(pedido),
             headers:{'Content-Type':'application/json; charset=UTF-8'}
             
         })
-       .then(response=>response.json()) 
-       .then(json=>{
-        alert(json.mensaje);
-       })
-    }
-    else{
-        alert('La fecha no es correcta')
+        .then(response=>response.json())
+        .then(json=>{
+            alert(json.mensaje);
+        })
     }
 }
 
