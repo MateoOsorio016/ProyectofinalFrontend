@@ -10,10 +10,9 @@ const listarpedidos=async()=>{
             let listarpedidos=data.pedidos
             listarpedidos.map((pedidos)=>{
                 mensaje+= `<tr><td>${pedidos.Nit}</td>`+
-                `<td>${pedidos.Proveedor}</td>`+
+                `<td>${pedidos.Cliente}</td>`+
                 `<td>${pedidos.Producto}</td>`+
                 `<td>${pedidos.Cantidad}</td>`+
-                `<td>${pedidos.Monto}</td>`+
                 `<td>${pedidos.Fecha}</td>`+
                 `<td>${pedidos.Factura}</td>`+
                 `<td>${pedidos.Total}</td>`+
@@ -33,8 +32,8 @@ const registrarPedidos=async()=>{
     let Proveedor=  document.getElementById('proveedor').value
     let Producto=  document.getElementById('producto').value
     let Cantidad=  document.getElementById('cantidad').value
-    let Monto=  document.getElementById('monto').value
     let Fecha = document.getElementById('fecha').value
+	let Categoria= document.getElementById('categoria').value
     let Factura = document.getElementById('factura').value
     let Estado = document.getElementById('estado').value
 
@@ -43,9 +42,9 @@ const registrarPedidos=async()=>{
         Proveedor:Proveedor,
         Producto:Producto,
         Cantidad:Cantidad,
-        Monto:Monto,
         Fecha:Fecha,
         Factura:Factura,
+	Categoria:Categoria,
         Estado:Estado
     }
     const FechaA = new Date().toISOString().split('T')[0];
@@ -56,8 +55,6 @@ const registrarPedidos=async()=>{
 	alert('El producto no puede llevar caracteres numericos')
 }else if(Cantidad<=0){
 	alert('La cantidad debe ser mayor a 0')
-}else if(Monto<=0){
-	alert('El monto debe ser mayor a 0')
 }else{
 	fetch(urlP,{
             method:'POST',
@@ -78,9 +75,9 @@ const editar=(pedido)=>{
     let Proveedor=  document.getElementById('proveedor').value=''
     let Producto=  document.getElementById('producto').value=''
     let Cantidad=  document.getElementById('cantidad').value=''
-    let Monto=  document.getElementById('monto').value=''
     let Fecha = document.getElementById('fecha').value=''
     let Factura = document.getElementById('factura').value=''
+let Categoria= document.getElementById('categoria').value=''
     let Estado = document.getElementById('estado').value=''
     
     document.getElementById('_id').value=pedido._id
@@ -88,9 +85,9 @@ const editar=(pedido)=>{
     document.getElementById('proveedor').value=pedido.Proveedor
     document.getElementById('producto').value=pedido.Producto
     document.getElementById('cantidad').value=pedido.Cantidad
-    document.getElementById('monto').value=pedido.Monto
     document.getElementById('fecha').value=pedido.Fecha
     document.getElementById('factura').value=pedido.Factura
+document.getElementById('categoria').value=pedido.Categoria
     document.getElementById('estado').value=pedido.Estado
     
 
@@ -101,9 +98,9 @@ const actualizarPedido=async()=>{
     let Proveedor=  document.getElementById('proveedor').value
     let Producto=  document.getElementById('producto').value
     let Cantidad=  document.getElementById('cantidad').value
-    let Monto=  document.getElementById('monto').value
     let Fecha = document.getElementById('fecha').value
     let Factura = document.getElementById('factura').value
+let Categoria= document.getElementById('categoria').value
     let Estado = document.getElementById('estado').value
 
     let pedido={
@@ -112,9 +109,9 @@ const actualizarPedido=async()=>{
         Proveedor:Proveedor,
         Producto:Producto,
         Cantidad:Cantidad,
-        Monto:Monto,
         Fecha:Fecha,
         Factura:Factura,
+	Categoria:Categoria,
         Estado:Estado
     }
     const FechaA = new Date().toISOString().split('T')[0];
@@ -125,8 +122,6 @@ const regexNombre = /^[a-zA-Z\s]+$/;
 	alert('El producto no puede llevar caracteres numericos')
 }else if(Cantidad<=0){
 	alert('La cantidad debe ser mayor a 0')
-}else if(Monto<=0){
-	alert('El monto debe ser mayor a 0')
 }else{
 	fetch(urlP,{
             method:'PUT',
