@@ -26,7 +26,7 @@
                 <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
                         <input id="proveedor" type="text" class="validate">
-                        <label for="proveedor">Proveedor</label>
+                        <label for="proveedor">Cliente</label>
                       </div>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
@@ -38,11 +38,6 @@
                         <input id="cantidad" type="number" class="validate">
                         <label for="cantidad">Cantidad</label>
                       </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="monto" type="number" class="validate">
-                        <label for="monto">Monto</label>
-                      </div>
                 <div class="input-field col s12">
                   <i class="material-icons prefix">lock</i>
                   <input id="fecha" type="date" class="validate">
@@ -53,6 +48,12 @@
                     <input id="factura" type="text" class="validate">
                     <label for="factura">Factura</label>
                   </div>
+                <div class="input-field col s12">
+                    <select class="browser-default" title="Categoria:" id="categoria">
+                      <option value="molido">Molido</option>
+                      <option value="grano">Grano</option>
+                    </select>
+                </div>
                 <div class="input-field col s12">
                     <select class="browser-default" title="Estado:" id="estado">
                       <option value="Activo">Activo</option>
